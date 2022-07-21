@@ -16,14 +16,6 @@ test_that("aes_string() parses strings", {
   suppressWarnings(expect_equal(aes_string("a + b")$x, quo(a + b)))
 })
 
-test_that("aes_string() doesn't parse non-strings", {
-  old <- options(OutDec = ",")
-  on.exit(options(old))
-
-  # Silence deprecation warning
-  suppressWarnings(expect_identical(aes_string(0.4)$x, 0.4))
-})
-
 test_that("aes_q() & aes_string() preserve explicit NULLs", {
   # Silence deprecation warning
   suppressWarnings(expect_equal(aes_q(NULL), aes(NULL)))
