@@ -16,13 +16,6 @@ test_that("aes_string() parses strings", {
   expect_equal(aes_string("a + b")$x, quo(a + b))
 })
 
-test_that("aes_string() doesn't parse non-strings", {
-  old <- options(OutDec = ",")
-  on.exit(options(old))
-
-  expect_identical(aes_string(0.4)$x, 0.4)
-})
-
 test_that("aes_q() & aes_string() preserve explicit NULLs", {
   expect_equal(aes_q(NULL), aes(NULL))
   expect_equal(aes_q(x = NULL), aes(NULL))
